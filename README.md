@@ -1,4 +1,4 @@
-<img width="810" height="630" alt="Captura de tela 2025-12-09 225751" src="https://github.com/user-attachments/assets/4bd15a95-9812-420a-9198-83f6bddac35f" /># Pac-Man.asm
+# Pac-Man.asm
 Clone completo do jogo Pac-Man desenvolvido em Assembly para o Simulador do ICMC-USP. Conta com um mecanismo de movimentação dos inimigos, geração de mapas aleatórios e sistema de colisão.
 
 # Pac-Man em Assembly (Simulador ICMC)
@@ -35,8 +35,7 @@ O projeto implementa lógicas de movimentação para inimigos e manipulação de
 * Criação de lógica de *debounce* para leitura de teclado.
 
 ## 📷 Screenshots
-![Tela Inicial do Pac-Man ICMC](./screenshots/tela_inicial.png)
-
+<img width="810" height="630" alt="Captura de tela 2025-12-09 225751" src="https://github.com/user-attachments/assets/4bd15a95-9812-420a-9198-83f6bddac35f" />
 
 ---
-Desenvolvido por [Seu Nome] - Sistemas de Informação (USP)
+Desenvolvido por [João Vitor Valerio Simplicio, Tainá Felinto, Maria Eduarda Iwashita] - Sistemas de Informação (USP)
