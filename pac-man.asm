@@ -1,9 +1,9 @@
 ; --- Jogo PAC-MAN ---
 ;Desenvolido por:
-;    João Vitor Valerio Simplicio
+;    João Vitor Valerio Simplicio, Tainá Felinto, Maria Eduarda Iwashita
 jmp main
 
-; --- Variaveis Globais ---
+;  Variaveis Globais
 posPac: var #1        
 posAntPac: var #1     
 dirPac: var #1        
@@ -12,7 +12,7 @@ delayTime: var #1
 randSeed:  var #1 
 dotsLeft:  var #1     
 
-; --- Variaveis dos 6 Fantasmas ---
+; Variaveis dos 6 Fantasmas
 posGhost1: var #1
 dirGhost1: var #1
 posGhost2: var #1
@@ -26,28 +26,28 @@ dirGhost5: var #1
 posGhost6: var #1
 dirGhost6: var #1
 
-; --- Codigo Principal ---
+; Codigo Principal
 main:
-    ; 1. Tela Inicial
+    ; Tela Inicial
     call TelaInicial_WaitEnter
     
-    ; 2. Prepara o Mapa
+    ; Prepara o Mapa
     call ConverteMapaParaAzul
     
-    ; 3. Espalha os 10 Pontos
+    ; Espalha os 10 Pontos
     call EspalhaPontosPeloMapa
 
-    ; 4. Desenha o mapa
+    ; Desenha o mapa
     call DesenhaMapaPrincipal
     
-    ; 5. Configura Pacman
+    ; Configura Pacman
     loadn R0, #619      
     store posPac, R0
     store posAntPac, R0
     loadn R0, #0
     store dirPac, R0    
     
-    ; 6. Configura Fantasmas
+    ; Configura Fantasmas
     loadn R0, #42       
     store posGhost1, R0
     loadn R0, #76       
@@ -61,7 +61,7 @@ main:
     loadn R0, #509      
     store posGhost6, R0
 
-    ; 7. Direcoes Iniciais
+    ; Direcoes Iniciais
     loadn R0, #2 
     store dirGhost1, R0
     loadn R0, #4 
@@ -105,7 +105,7 @@ Loop:
     
     jmp Loop
 
-; --- TELA INICIAL ---
+; TELA INICIAL
 TelaInicial_WaitEnter:
     call ApagaTela
     
@@ -146,7 +146,7 @@ TelaInicial_WaitEnter:
     loadn R0, #613  
     call Escreve_AperteEnter
 
-    ; Loop Espera + Gera Seed
+
     loadn R2, #50
 Wait_Start_Loop:
     inc R2
@@ -163,7 +163,7 @@ Sai_Tela_Start:
     call ApagaTela
     rts
 
-; --- ROTINA DE LIMPEZA E PREPARO DO MAPA ---
+; ROTINA DE LIMPEZA E PREPARO DO MAPA
 ConverteMapaParaAzul:
     push R0
     push R1
@@ -178,27 +178,27 @@ ConverteMapaParaAzul:
 Converte_Loop:
     loadi R4, R0        
     
-    ; 1. Se for chao original (3967), vira espaco
+    ; Se for chao original (3967), vira espaco
     loadn R3, #3967
     cmp R4, R3          
     jeq Vira_Espaco
     
-    ; 2. Se ja for espaco (32), mantem
+    ; Se ja for espaco (32), mantem
     loadn R3, #' '
     cmp R4, R3
     jeq Prox_Conversao
 
-    ; 3. Se for PONTO ('.') de partida velha, vira espaco
+    ; Se for PONTO ('.') de partida velha, vira espaco
     loadn R3, #'.'
     cmp R4, R3
     jeq Vira_Espaco
 
-    ; 4. Se ja for parede azul (3107), mantem
+    ; Se ja for parede azul (3107), mantem
     loadn R3, #3107
     cmp R4, R3
     jeq Prox_Conversao
     
-    ; 5. Senao, eh parede original -> Pinta de Azul
+    ; Senao, eh parede original, Pinta de Azul
     loadn R4, #3107      
     storei R0, R4       
     jmp Prox_Conversao
@@ -220,7 +220,7 @@ Prox_Conversao:
     pop R0
     rts
 
-; --- ESPALHAR PONTOS ---
+; ESPALHAR PONTOS
 EspalhaPontosPeloMapa:
     push R0
     push R1
@@ -267,7 +267,7 @@ Loop_Espalha:
     pop R0
     rts
 
-; --- MOVIMENTO PACMAN ---
+; MOVIMENTO PACMAN
 MovePacman:
     push R0
     push R1
@@ -331,7 +331,7 @@ Move_Sai:
     pop R0
     rts
 
-; --- VERIFICACOES DE FIM DE JOGO ---
+; VERIFICACOES DE FIM DE JOGO
 
 Check_Win_Condition:
     push R0
@@ -540,7 +540,7 @@ Escreve_AperteEnter:
     outchar R2, R0
     rts
 
-; --- MOVIMENTACAO FANTASMAS ---
+; MOVIMENTACAO DOS FANTASMAS
 
 MoveFantasmas:
     push R0
@@ -591,7 +591,7 @@ Move_Individual_Ghost:
 
     call Calc_Pos_Generica 
 
-    ; Verifica colisao (Aceita espaco ou ponto)
+    ; Verifica colisao
     loadn R3, #Fundo
     add R3, R3, R2
     loadi R4, R3
@@ -646,7 +646,7 @@ End_Move_Ghost:
     pop R0
     rts
 
-; --- INPUT ---
+; INPUT
 LerInput:
     push R0
     push R1
@@ -688,7 +688,7 @@ LerInput_Fim:
     pop R0
     rts
 
-; --- CALCULOS AUXILIARES ---
+; calculos
 
 Calc_Pos_Generica:
     push R3
@@ -758,7 +758,7 @@ GeraRandomMapPos:
     pop R1
     rts
 
-; --- FUNCOES DE DESENHO ---
+; DESENHOS
 
 printPacman:
   push R0
