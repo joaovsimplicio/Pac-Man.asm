@@ -7,6 +7,8 @@ Uma recriação funcional do clássico **Pac-Man**, desenvolvida inteiramente em
 
 O projeto implementa lógicas de movimentação para inimigos e manipulação de vídeo de baixo nível.
 
+Segue o link de apresentação no YouTube: https://youtu.be/IMjbwLrGJgo
+
 ## ✨ Funcionalidades
 
 * **6 Fantasmas:** Os inimigos utilizam um algoritmo de *Busca Gulosa* (Greedy Search) para perseguir o jogador, alternando com movimentos aleatórios e de "fuga" para evitar ficarem presos em cantos.
